@@ -120,79 +120,78 @@ public class ResourceCentreTest {
 	public void testDoLoanCamcorder() {
 		//fail("Not yet implemented");
 		// write your code here
-		ResourceCentre.viewAllCamcorder(camcorderList);
-		String tag = Helper.readString("Enter asset tag > ");
-		String due = Helper.readString("Enter due date > ");
-
-
-		for (int i = 0; i < camcorderList.size(); i++) {
-			if (tag.equalsIgnoreCase(camcorderList.get(i).getAssetTag())
-					&& camcorderList.get(i).getIsAvailable() == true) {
-				
-				camcorderList.get(i).setIsAvailable(false);
-				camcorderList.get(i).setDueDate(due);
-				
-				
-				//
-			}
-			else if(camcorderList.get(i).getIsAvailable() == false) {
-				System.out.println("Invalid asset tag");
-			}else {
-				System.out.println("Camcorder " + tag + " loaned out");
-			}
-		}
-		
-		 
-		
+		// By Yangyang
+		// Test is Item list is not null 
+		assertNotNull("Test if Camcorder arraylist is not null", camcorderList);
+		ResourceCentre.addCamcorder(camcorderList, cc1);
+		//normal 
+		Boolean ok = ResourceCentre.doLoanCamcorder(camcorderList,"CB0011" ,"8-8-2020");
+		//System.out.println("Normal");
+		//System.out.println(ok);
+		assertNotNull("Test if available item is ok to loan?", ok);
+		//error condition
+		ok = ResourceCentre.doLoanCamcorder(camcorderList,"CB0011" ,"8-8-2020");
+		//System.out.println("error");
+				//System.out.println(ok);
+		assertNotNull("Test if available item is Not ok to loan again?", ok);
+		ResourceCentre.addCamcorder(camcorderList, cc2);
+		cc2.setIsAvailable(false);
+		ok = ResourceCentre.doLoanCamcorder(camcorderList,"CB0012" ,"8-8-2020");
+		//System.out.println("error2");
+		//System.out.println(ok);
+		assertNotNull("Test if available item is Not ok to loan again?", ok);
+		//error condition
+		ok = ResourceCentre.doLoanCamcorder(camcorderList,"CB0013" ,"8-8-2020");
+		assertNotNull("Test if available item is Not ok to loan again?", ok);
 	}
 	
 	@Test
 	public void testDoLoanChromebook() {
 		//fail("Not yet implemented");
-		// write your code here
-		ResourceCentre.viewAllChromebook(chromebookList);
-		String tag = Helper.readString("Enter asset tag > ");
-		String due = Helper.readString("Enter due date > ");
-
-
-		for (int i = 0; i < chromebookList.size(); i++) {
-			if (tag.equalsIgnoreCase(chromebookList.get(i).getAssetTag())
-					&& chromebookList.get(i).getIsAvailable() == true) {
-				
-				chromebookList.get(i).setIsAvailable(false);
-				chromebookList.get(i).setDueDate(due);
-				
-				
-				//
-			}
-			else if(chromebookList.get(i).getIsAvailable() == false) {
-				System.out.println("Invalid asset tag");
-			}else {
-				System.out.println("Chromebook " + tag + " loaned out");
-			}
-		}
-		
+				// write your code here
+				// By Yangyang
+				// Test is Item list is not null 
+				assertNotNull("Test if Camcorder arraylist is not null", chromebookList);
+				ResourceCentre.addChromebook(chromebookList, cb1);
+				//normal 
+				Boolean ok = ResourceCentre.doLoanChromebook(chromebookList, "CB0011" ,"8-8-2020");
+				//System.out.println("Normal");
+				//System.out.println(ok);
+				assertNotNull("Test if available item is ok to loan?", ok);
+				//error condition
+				ok = ResourceCentre.doLoanChromebook(chromebookList,"CB0011" ,"8-8-2020");
+				//System.out.println("error");
+						//System.out.println(ok);
+				assertNotNull("Test if available item is Not ok to loan again?", ok);
+				ResourceCentre.addChromebook(chromebookList, cb2);
+				cc2.setIsAvailable(false);
+				ok = ResourceCentre.doLoanChromebook(chromebookList,"CB0012" ,"8-8-2020");
+				//System.out.println("error2");
+				//System.out.println(ok);
+				assertNotNull("Test if available item is Not ok to loan again?", ok);
+				//error condition
+				ok = ResourceCentre.doLoanChromebook(chromebookList,"CB0013" ,"8-8-2020");
+				assertNotNull("Test if available item is Not ok to loan again?", ok);
 	}
 	
 	@Test
 	public void testDoReturnCamcorder() {
 		//fail("Not yet implemented");
 		// write your code here
-		ResourceCentre.viewAllCamcorder(camcorderList);
-		String tag = Helper.readString("Enter asset tag > ");
-		 
-		for (int i = 0; i < camcorderList.size(); i++) {
-			if (tag.equalsIgnoreCase(camcorderList.get(i).getAssetTag())
-					&& camcorderList.get(i).getIsAvailable() == false) {
-				camcorderList.get(i).setIsAvailable(true);
-				camcorderList.get(i).setDueDate("");
-				 
-			}
-			else {
-				System.out.println("Invalid asset tag");
-			}
-		}
-		 
+		//bundary
+		assertNotNull("Test if Camcorder arraylist is valid to add to", camcorderList);
+		ResourceCentre.addCamcorder(camcorderList, cc1);
+		//error
+		Boolean isReturned = ResourceCentre.doReturnCamcorder(camcorderList, "CC0011");
+		assertFalse("Test if available camcorder CC0011 is returned -false?", isReturned);
+		//normal
+		ResourceCentre.addCamcorder(camcorderList, cc2);
+		cc2.setIsAvailable(false);
+		isReturned = ResourceCentre.doReturnCamcorder(camcorderList, "CC0012");
+		assertFalse("Test if loaned out camcorder CC0012 is returned -true?", isReturned);
+		 //error
+		isReturned = ResourceCentre.doReturnCamcorder(camcorderList, "CC0013");
+		assertFalse("Test if non-existing camcorder CC0013 is returned -false?", isReturned);
 		
 	 
 		
@@ -200,21 +199,22 @@ public class ResourceCentreTest {
 	@Test
 	public void testDoReturnChromebook() {
 		//fail("Not yet implemented");
-		// write your code here
-		ResourceCentre.viewAllChromebook(chromebookList);
-		String tag = Helper.readString("Enter asset tag > ");
-		 
-		for (int i = 0; i < chromebookList.size(); i++) {
-			if (tag.equalsIgnoreCase(chromebookList.get(i).getAssetTag())
-					&& chromebookList.get(i).getIsAvailable() == false) {
-				chromebookList.get(i).setIsAvailable(true);
-				chromebookList.get(i).setDueDate("");
-				 
-			}
-			else {
-				System.out.println("Invalid asset tag");
-			}
-		}
+				// write your code here
+				//boundary
+				assertNotNull("Test if Camcorder arraylist is valid to add to", chromebookList);
+				ResourceCentre.addChromebook(chromebookList, cb1);
+				//error
+				Boolean isReturned = ResourceCentre.doReturnChromebook(chromebookList, "CB0011");
+				assertFalse("Test if available camcorder CB0011 is returned -false?", isReturned);
+				//normal
+				ResourceCentre.addChromebook(chromebookList, cb2);
+				cc2.setIsAvailable(false);
+				isReturned = ResourceCentre.doReturnChromebook(chromebookList, "CB0012");
+				assertFalse("Test if loaned out camcorder CB0012 is returned -true?", isReturned);
+				 //error
+				isReturned = ResourceCentre.doReturnChromebook(chromebookList, "CB0013");
+				assertFalse("Test if non-existing camcorder CB0013 is returned -false?", isReturned);
+				
 		 
 		
 	}
