@@ -216,6 +216,7 @@ public class ResourceCentre {
 	}
 	
 	public static boolean doLoanChromebook(ArrayList<Chromebook> chromebookList, String tag, String dueDate) {
+		//done by 19020947-Chong-WahHao
 		// write your code here
 		boolean isLoaned = false;
 
@@ -233,6 +234,7 @@ public class ResourceCentre {
 		return isLoaned;
 	}
 	public static void loanChromebook(ArrayList<Chromebook> chromebookList) {
+		//done by 19020947-Chong-WahHao
 		// write your code here
 		ResourceCentre.viewAllChromebook(chromebookList);
 		String tag = Helper.readString("Enter asset tag > ");
