@@ -147,6 +147,7 @@ public class ResourceCentreTest {
 	
 	@Test
 	public void testDoLoanChromebook() {
+		//Done by YY
 		//fail("Not yet implemented");
 				// write your code here
 				// By Yangyang
@@ -176,6 +177,7 @@ public class ResourceCentreTest {
 	
 	@Test
 	public void testDoReturnCamcorder() {
+		//Done by YY
 		//fail("Not yet implemented");
 		// write your code here
 		//bundary
@@ -198,6 +200,7 @@ public class ResourceCentreTest {
 	}
 	@Test
 	public void testDoReturnChromebook() {
+		//Done by Yangyang
 		//fail("Not yet implemented");
 				// write your code here
 				//boundary
