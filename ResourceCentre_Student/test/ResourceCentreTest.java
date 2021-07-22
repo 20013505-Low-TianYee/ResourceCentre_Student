@@ -93,6 +93,7 @@ public class ResourceCentreTest {
 	}
 	@Test
 	public void testRetrieveAllChromebook() {
+		//By Adam
 		// Test if Item list is not null but empty, so that can add a new item
 				assertNotNull("Test if there is valid Chromebook arraylist to add to", chromebookList);
 				
