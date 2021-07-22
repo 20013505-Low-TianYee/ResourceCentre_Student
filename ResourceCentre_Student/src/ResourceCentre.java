@@ -144,7 +144,7 @@ public class ResourceCentre {
 	}
 
 	public static String retrieveAllChromebook(ArrayList<Chromebook> chromebookList) {
-		String output = "";
+
 		// write your code here
 		ResourceCentre.setHeader("CHROMEBOOK LIST");
 		String output1 = String.format("%-10s %-30s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION",
