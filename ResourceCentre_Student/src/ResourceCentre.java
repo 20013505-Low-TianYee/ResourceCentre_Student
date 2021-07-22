@@ -122,7 +122,7 @@ public class ResourceCentre {
 		return avail;
 	}
 
-	//================================= Option 1 View items (CRUD- Read) =================================
+	//================================= Option 1 View items (CRUD- Read) ================================= TianYee
 	public static String retrieveAllCamcorder(ArrayList<Camcorder> camcorderList) {
 		String output = "";
 
@@ -143,10 +143,17 @@ public class ResourceCentre {
 		System.out.println(output);
 	}
 
-	public static String retrieveAllChromebook(ArrayList<Chromebook> chromebookList) {
-		String output = "";
+	public static String retrieveAllChromebook(ArrayList<Chromebook> chromebookList) { //done by TY
+
 		// write your code here
-		return output;
+		ResourceCentre.setHeader("CHROMEBOOK LIST");
+		String output1 = String.format("%-10s %-30s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION",
+				"AVAILABLE", "DUE DATE","OPERATING SYSTEM");
+		 
+		for (Chromebook c: chromebookList) {
+			output1+= String.format("%-10s %-30s %-10s %-10s %-20s\n",c.getAssetTag(),c.getDescription(),c.getIsAvailable(),c.getDueDate(),c.getOs());
+		}
+		return output1;
 	}
 	public static void viewAllChromebook(ArrayList<Chromebook> chromebookList) {
 		
@@ -265,7 +272,7 @@ public class ResourceCentre {
 			}
 		}
 		return isReturned;
-		
+		//testing testing 1 2 3 
 	}
 	public static void returnCamcorder(ArrayList<Camcorder> camcorderList) {
 		ResourceCentre.viewAllCamcorder(camcorderList);
