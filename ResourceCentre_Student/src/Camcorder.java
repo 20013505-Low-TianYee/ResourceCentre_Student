@@ -12,10 +12,13 @@ public class Camcorder extends Item{
 	}
 	
 	public String toString(){
-		String output = "";
+		String info = super.toString();
 		// Write your codes here
+<<<<<<< HEAD
 		String info = super.toString();
 		
+=======
+>>>>>>> branch 'master' of https://github.com/20013505-Low-TianYee/ResourceCentre_Student.git
 		return String.format("%-63s %-20d", info, getOpticalZoom());
 	}
 }
